@@ -1,0 +1,2 @@
+# firstmicroservices
+Se creara una solución de software cuyo objetivo es modelar los servicios de una empresa ficticia que maneja clientes, productos, y ventas. Cada uno de esos dominios se creará como un microservicio. Adicionalmente, construiremos un servicio de búsqueda, el cual se comunicará a los servicios de clientes, productos y ventas, para obtener los datos de un cliente en específico, agregando la información obtenida de cada uno de ellos. Esta comunicación la haremos de forma síncrona, a través del protocolo HTTP. 
