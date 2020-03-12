@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Lil.Customers.DAL;
 
 namespace Lil.Customers
 {
@@ -25,6 +26,7 @@ namespace Lil.Customers
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<ICustomersProvider, CustomersProvider>();
             services.AddControllers();
         }
 
@@ -35,8 +37,6 @@ namespace Lil.Customers
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseHttpsRedirection();
 
             app.UseRouting();
 
