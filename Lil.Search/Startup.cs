@@ -26,6 +26,11 @@ namespace Lil.Search
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddHttpClient("customersService", c =>
+            {
+                c.BaseAddress = new Uri(Configuration["Service:Customers"]);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
