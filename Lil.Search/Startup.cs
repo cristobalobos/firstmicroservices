@@ -31,8 +31,9 @@ namespace Lil.Search
             services.AddControllers();
 
             services.AddSingleton<ICustomersService, CustomersService>();
-            services.AddSingleton<ISalesService, SalesService>();
             services.AddSingleton<IProductsService, ProductService>();
+            services.AddSingleton<ISalesService, SalesService>();
+            
 
             services.AddHttpClient("customersService", c =>
             {

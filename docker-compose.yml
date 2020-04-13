@@ -1,0 +1,51 @@
+version: '3.4'
+
+services:
+  lil.customers:
+    image: ${DOCKER_REGISTRY-}lilcustomers
+    build:
+      context: .
+      dockerfile: Lil.Customers/Dockerfile
+    ports:
+      - target: 80
+        published: 9000
+        protocol: tcp
+        mode: host
+            
+  lil.products:
+    image: ${DOCKER_REGISTRY-}lilproducts
+    build:
+      context: .
+      dockerfile: Lil.Products/Dockerfile
+    ports:
+      - target: 80
+        published: 9100
+        protocol: tcp
+        mode: host
+
+  lil.sales:
+    image: ${DOCKER_REGISTRY-}lilsales
+    build:
+      context: .
+      dockerfile: Lil.Sales/Dockerfile
+    ports:
+      - target: 80
+        published: 9200
+        protocol: tcp
+        mode: host
+
+  lil.search:
+    image: ${DOCKER_REGISTRY-}lilsearch
+    build:
+      context: .
+      dockerfile: Lil.Search/Dockerfile
+    ports:
+      - target: 80
+        published: 9300
+        protocol: tcp
+        mode: host
+    environment:
+      - Services__Customers=http://lil.customers
+      - Services__Products=http://lil.products
+      - Services__Sales=http://lil.sales
+    
