@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Lil.Search.Interfaces;
+using Lil.Search.Services;
+
 
 namespace Lil.Search
 {
@@ -26,6 +29,10 @@ namespace Lil.Search
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddSingleton<ICustomersService, CustomersService>();
+            services.AddSingleton<ISalesService, SalesService>();
+            services.AddSingleton<IProductsService, ProductService>();
 
             services.AddHttpClient("customersService", c =>
             {
@@ -51,7 +58,7 @@ namespace Lil.Search
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
